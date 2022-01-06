@@ -1,12 +1,18 @@
 <template>
   <div class="homePage">
-    <el-button type="primary" icon="el-icon-switch-button" circle @click="exit"></el-button>
+    <navigation-bar></navigation-bar>
+    <el-button type="primary" class="head-image" icon="el-icon-switch-button" circle @click="exit"></el-button>
   </div>
 </template>
 
 <script>
+import navigationBar from '../../components/navigation-bar/index.vue'
+
 export default {
   name: 'index',
+  components: {
+    navigationBar
+  },
   methods: {
     exit () {
       this.$router.replace('/')

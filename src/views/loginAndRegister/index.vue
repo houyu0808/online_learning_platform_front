@@ -213,6 +213,7 @@ export default {
         this.loadStatus = false
         if (res.status === 200) {
           this.$message.success(res.result)
+          localStorage.setItem('username', this.form.username)
           this.$router.push('/home')
         } else {
           this.$message.error(res.message)
