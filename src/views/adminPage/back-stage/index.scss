@@ -1,0 +1,34 @@
+.back-stage-page{
+  height: 100vh;
+  /deep/ .el-container{
+    height: 100%;
+    .aside-menu{
+      height: 100%;
+      .el-menu-vertical{
+        max-width: 15vw;
+        height: 100%;
+        .menu-title{
+          width: 100%;
+        }
+        .el-menu-item{
+          font-size: 1rem;
+        }
+      }
+      .el-menu-vertical:not(.el-menu--collapse) {
+        width: 15vw;
+        min-height: 400px;
+      }
+
+    }
+    .collapse-box{
+      font-size: 2rem;
+      width: 4rem;
+      float: left;
+      line-height: 2.8rem;
+      .menu-button{
+        font-size: 2rem !important;
+        cursor: pointer;
+    }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.form-box{
+  width: 30rem;
+  margin: 10vh auto;
+  /deep/ .el-form-item{
+    width: 30rem;
+    /deep/ .el-input{
+      width: 20rem;
+    }
+  }
+  /deep/ .el-upload-list{
+    margin-top: -3rem;
+  }
+  /deep/ .el-upload-list__item-thumbnail{
+     width: auto;
+     height: 100%;
+   }
+}
+.button-box{
+  width: 10rem;
+  margin: 0 auto;
+}
+

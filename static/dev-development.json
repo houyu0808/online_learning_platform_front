@@ -1,0 +1,35 @@
+{
+  "BASE_URL": "http://localhost:8090/",
+  "Url": "http://localhost:8080",
+  "MENU": [
+    {
+      "id": "college-manage",
+      "name": "学院管理",
+      "path": "/college-manage"
+    }, {
+      "id": "major-manage",
+      "name": "专业管理",
+      "path": "/major-manage"
+    }, {
+      "id": "class-manage",
+      "name": "班级管理",
+      "path": "/class-manage"
+    }, {
+      "id": "course-manage",
+      "name": "课程管理",
+      "path": "/course-manage"
+    }, {
+      "id": "student-manage",
+      "name": "学生管理",
+      "path": "/student-manage"
+    }, {
+      "id": "teacher-manage",
+      "name": "教师管理",
+      "path": "/teacher-manage"
+    }, {
+      "id": "video-manage",
+      "name": "视频管理",
+      "path": "/video-manage"
+    }
+  ]
+}

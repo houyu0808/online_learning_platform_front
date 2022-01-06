@@ -1,0 +1,31 @@
+.admin-page{
+  .backImg{
+    width: 75vw;
+  }
+  .admin-login{
+    width: 100%;
+    .logoImg{
+      width: 400px;
+      display: block;
+      margin: 10vh auto;
+    }
+    .logoImg2{
+      width: 400px;
+      float: right;
+      display: inline-block;
+    }
+    .login-form-box{
+      font-size: 1.3rem;
+      font-weight: bold;
+      width: 70%;
+      margin: 10vh auto;
+      .button{
+        width: 50%;
+        margin: 10vh auto;
+        .submit{
+          width: 100%;
+        }
+      }
+    }
+  }
+}

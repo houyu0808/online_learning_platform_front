@@ -1,0 +1,119 @@
+.row-bg{
+  height: 100vh;
+  z-index: 1;
+  .login-form,.register-form,.student-form,.teacher-form,.changePwd-form{
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.5rem;
+    margin-top: 20vh;
+    min-width: 15rem;
+    min-height: 20rem;
+    max-height: 27rem;
+    max-width: 25rem;
+    .login-tab{
+      /deep/ .el-tabs__item{
+        width: 100%;
+        text-align: center;
+      }
+      /deep/ .el-tabs__nav {
+         width: 50%;
+       }
+      /deep/ .el-tabs__nav-wrap{
+        width: 100%;
+        border-radius: 0.5rem;
+        padding: 0;
+      }
+      /deep/ .el-tabs__nav-prev{
+        display: none;
+      }
+      /deep/ .el-tabs__nav-next{
+        display: none;
+      }
+    }
+    .login-form-box{
+      width: 90%;
+      margin: 1rem auto;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    .register-box{
+      width: 90%;
+      margin: 1rem auto;
+      font-size: 1rem;
+      font-weight: bold;
+      .select-btn{
+        margin-top: 2rem;
+        /deep/ .el-form-item__label{
+          font-size: 1.2rem;
+        }
+        /deep/ .el-button{
+           width: 100%;
+           margin: 1rem auto;
+         }
+      }
+    }
+    .student-box,.teacher-box{
+      width: 90%;
+      margin: 1rem auto;
+      font-size: 1rem;
+      font-weight: bold;
+      .back-icon{
+        margin-bottom: 1rem;
+      }
+      /deep/ .el-form-item__label{
+        width: 28%;
+      }
+      /deep/ .el-input{
+        width: 60%;
+      }
+      .register-btn{
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
+    .changePwd-box{
+      width: 90%;
+      margin: 1rem auto;
+      font-size: 1rem;
+      font-weight: bold;
+      /deep/ .el-form-item__label{
+        width: 28%;
+      }
+      /deep/ .el-input{
+        width: 60%;
+      }
+      /deep/ .el-button{
+        width: 100%;
+      }
+    }
+    .button{
+      width: 100%;
+      margin: 5vh auto;
+      text-align: center;
+      .submit{
+        margin: 1rem auto;
+        width: 50%;
+      }
+      a{
+        color: deepskyblue;
+        cursor: pointer;
+      }
+      a:nth-child(1){
+        margin-top: 1.5rem;
+        display: inline-block;
+        float: left;
+      }
+      a:nth-child(3){
+        margin-top: 1.5rem;
+        display: inline-block;
+        float: right;
+      }
+    }
+    .back-icon{
+      cursor: pointer;
+      display: inline-block;
+      color: deepskyblue;
+      margin-top: 1vh;
+      margin-left: 1vh;
+    }
+  }
+}
