@@ -10,10 +10,11 @@
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b"
-          router>
-          <img class="menu-title" :src="menuImg" v-if="!isCollapse" alt="">
+          router
+        >
+          <img class="menu-title" :src="menuImg" v-if="!isCollapse" alt="" />
           <div v-for="item in menuList" :key="item.id">
-            <el-menu-item :index="item.path" >
+            <el-menu-item :index="item.path">
               <i class="el-icon-menu"></i>
               <span slot="title">{{ item.name }}</span>
             </el-menu-item>
@@ -23,39 +24,47 @@
       <el-container>
         <el-header class="main-header" style="height: auto">
           <div class="collapse-box">
-            <i class="el-icon-s-fold menu-button" v-if="!isCollapse" @click="changCollapse"></i>
-            <i class="el-icon-s-unfold menu-button" v-if="isCollapse" @click="changCollapse"></i>
+            <i
+              class="el-icon-s-fold menu-button"
+              v-if="!isCollapse"
+              @click="changCollapse"
+            ></i>
+            <i
+              class="el-icon-s-unfold menu-button"
+              v-if="isCollapse"
+              @click="changCollapse"
+            ></i>
           </div>
           <breadcrumb></breadcrumb>
         </el-header>
-        <router-view/>
+        <router-view />
       </el-container>
     </el-container>
   </div>
 </template>
 <script>
-import breadcrumb from '../../../components/breadcrumb/index'
-import menuImg from '../../../assets/images/后台LOGO.png'
-import global from '../../../utils/global'
+import breadcrumb from "../../../components/breadcrumb/index";
+import menuImg from "../../../assets/images/后台LOGO.png";
+import global from "../../../utils/global";
 
 export default {
-  name: 'index',
+  name: "index",
   components: {
-    breadcrumb
+    breadcrumb,
   },
-  data () {
+  data() {
     return {
       isCollapse: false,
       menuImg: menuImg,
-      menuList: global.MENU
-    }
+      menuList: global.MENU,
+    };
   },
   methods: {
-    changCollapse () {
-      this.isCollapse = !this.isCollapse
-    }
-  }
-}
+    changCollapse() {
+      this.isCollapse = !this.isCollapse;
+    },
+  },
+};
 </script>
 <style scoped lang="scss">
 @import "index";

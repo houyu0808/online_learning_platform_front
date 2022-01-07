@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import VideoPlayer from 'vue-video-player'
-import Vue from 'vue'
-require('video.js/dist/video-js.css')
-require('vue-video-player/src/custom-theme.css')
-Vue.use(VideoPlayer)
+import VideoPlayer from 'vue-video-player';
+import Vue from 'vue';
+require('video.js/dist/video-js.css');
+require('vue-video-player/src/custom-theme.css');
+Vue.use(VideoPlayer);
 
 export default {
   name: 'index',
@@ -60,17 +60,17 @@ export default {
           fullscreenToggle: true // 全屏按钮
         }
       }
-    }
+    };
   },
   methods: {
     fullScreen () {
-      const player = this.$refs.videoPlayer.player
-      player.requestFullscreen() // 调用全屏api方法
-      player.isFullscreen(true)
-      player.play()
+      const player = this.$refs.videoPlayer.player;
+      player.requestFullscreen(); // 调用全屏api方法
+      player.isFullscreen(true);
+      player.play();
     },
     onPlayerPlay (player) {
-      player.play()
+      player.play();
     },
     onPlayerPause (player) {
       // alert("pause");
@@ -78,10 +78,10 @@ export default {
   },
   computed: {
     player () {
-      return this.$refs.videoPlayer.player // 自定义播放
+      return this.$refs.videoPlayer.player; // 自定义播放
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">

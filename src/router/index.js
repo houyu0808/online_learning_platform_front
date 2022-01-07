@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
 
-Vue.use(Router)
+Vue.use(Router);
 export default new Router({
   mode: 'history',
   routes: [
@@ -35,7 +35,7 @@ export default new Router({
           name: '编辑学生',
           component: () => import('../views/adminPage/back-stage/student-manage/detail/index'),
           props: (router) => {
-            return {id: router.query.id}
+            return {id: router.query.id};
           }
         },
         {
@@ -48,7 +48,7 @@ export default new Router({
           name: '编辑教师',
           component: () => import('../views/adminPage/back-stage/teacher-manage/detail/index'),
           props: (router) => {
-            return {id: router.query.id}
+            return {id: router.query.id};
           }
         },
         {
@@ -61,7 +61,7 @@ export default new Router({
           name: '编辑学院',
           component: () => import('../views/adminPage/back-stage/college-manage/detail/index'),
           props: (router) => {
-            return {id: router.query.id}
+            return {id: router.query.id};
           }
         },
         {
@@ -74,7 +74,7 @@ export default new Router({
           name: '编辑专业',
           component: () => import('../views/adminPage/back-stage/major-manage/detail/index'),
           props: (router) => {
-            return {id: router.query.id}
+            return {id: router.query.id};
           }
         },
         {
@@ -87,7 +87,7 @@ export default new Router({
           name: '编辑课程',
           component: () => import('../views/adminPage/back-stage/course-manage/detail/index'),
           props: (router) => {
-            return {id: router.query.id}
+            return {id: router.query.id};
           }
         },
         {
@@ -100,7 +100,7 @@ export default new Router({
           name: '编辑课程',
           component: () => import('../views/adminPage/back-stage/class-manage/detail/index'),
           props: (router) => {
-            return {id: router.query.id}
+            return {id: router.query.id};
           }
         },
         {
@@ -113,10 +113,10 @@ export default new Router({
           name: '编辑课程',
           component: () => import('../views/adminPage/back-stage/video-manage/detail/index'),
           props: (router) => {
-            return {id: router.query.id}
+            return {id: router.query.id};
           }
         }
       ]
     }
   ]
-})
+});

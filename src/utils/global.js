@@ -1,5 +1,5 @@
-import Global from '../../static/dev-development.json'
+import Global from '../../static/dev-development.json';
 
-const global = Global
+const global = Global;
 
-export default global
+export default global;

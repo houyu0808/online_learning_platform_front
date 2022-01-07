@@ -28,6 +28,8 @@ module.exports = {
     'eol-last': 0,
     //结尾分号
     'semi' : [2,"always"],
+    'quotes': [0],
+    'comma-dangle': [0],
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development

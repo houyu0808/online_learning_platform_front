@@ -1,8 +1,12 @@
 <template>
   <div class="navbar clearfix">
     <el-breadcrumb class="breadcrumb-container" separator="/">
-      <el-breadcrumb-item v-for="item in levelList" :key="item.path" :to="{path: item.path}">
-        {{item.name}}
+      <el-breadcrumb-item
+        v-for="item in levelList"
+        :key="item.path"
+        :to="{ path: item.path }"
+      >
+        {{ item.name }}
       </el-breadcrumb-item>
     </el-breadcrumb>
   </div>
@@ -10,29 +14,29 @@
 
 <script>
 export default {
-  name: 'index',
-  data () {
+  name: "index",
+  data() {
     return {
       levelList: [],
-      isCollapse: false
-    }
+      isCollapse: false,
+    };
   },
   watch: {
-    $route () {
-      this.getBreadcrumb() // 监听路由变化
-    }
+    $route() {
+      this.getBreadcrumb(); // 监听路由变化
+    },
   },
-  created () {
-    this.getBreadcrumb()
+  created() {
+    this.getBreadcrumb();
   },
   methods: {
-    getBreadcrumb () {
-      let matched = this.$route.matched.filter(item => item.name) // 获取路由信息，并过滤保留路由名称信息存入数组
-      this.levelList = matched
-      this.levelList[0].path = this.levelList[1].path
-    }
-  }
-}
+    getBreadcrumb() {
+      let matched = this.$route.matched.filter((item) => item.name); // 获取路由信息，并过滤保留路由名称信息存入数组
+      this.levelList = matched;
+      this.levelList[0].path = this.levelList[1].path;
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

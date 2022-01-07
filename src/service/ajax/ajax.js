@@ -1,5 +1,5 @@
-import global from '../../utils/global'
-import axios from '../../utils/Interceptor'
+import global from '../../utils/global';
+import axios from '../../utils/Interceptor';
 
 axios.ajax = function ajax (url, method, params, form = false, catchReject = false) {
   if (method !== 'get') {
@@ -13,12 +13,12 @@ axios.ajax = function ajax (url, method, params, form = false, catchReject = fal
             'Content-Type': 'application/x-www-form-urlencoded'
           }
         }).then(response => {
-          resolve(response.data)
+          resolve(response.data);
         })
           .catch(err => {
-            reject(err)
-          })
-      })
+            reject(err);
+          });
+      });
     } else {
       if (catchReject) {
         return new Promise((resolve, reject) => {
@@ -27,12 +27,12 @@ axios.ajax = function ajax (url, method, params, form = false, catchReject = fal
             method: method,
             data: params
           }).then(response => {
-            resolve(response.data)
+            resolve(response.data);
           })
             .catch(err => {
-              reject(err)
-            })
-        })
+              reject(err);
+            });
+        });
       } else {
         return new Promise((resolve, reject) => {
           axios({
@@ -43,12 +43,12 @@ axios.ajax = function ajax (url, method, params, form = false, catchReject = fal
               'Content-type': 'application/json;charset=utf-8'
             }
           }).then(response => {
-            resolve(response.data)
+            resolve(response.data);
           })
             .catch(err => {
-              reject(err)
-            })
-        })
+              reject(err);
+            });
+        });
       }
     }
   } else {
@@ -61,13 +61,13 @@ axios.ajax = function ajax (url, method, params, form = false, catchReject = fal
           'Content-type': 'application/json;charset=utf-8'
         }
       }).then(response => {
-        resolve(response.data)
+        resolve(response.data);
       })
         .catch(err => {
-          reject(err)
-        })
-    })
+          reject(err);
+        });
+    });
   }
-}
+};
 
-export default axios
+export default axios;

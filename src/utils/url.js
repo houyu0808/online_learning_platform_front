@@ -1,5 +1,5 @@
-import Global from '../../static/dev-development.json'
+import Global from '../../static/dev-development.json';
 
-const url = Global.Url
+const url = Global.Url;
 
-export default url
+export default url;

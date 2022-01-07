@@ -1,23 +1,23 @@
-import axios from './ajax/index'
+import axios from './ajax/index';
 
-let api = {}
+let api = {};
 
 api.getClassPage = (params) => {
-  return axios.get('class/getclasspage', params)
-}
+  return axios.get('class/getclasspage', params);
+};
 api.saveClass = (params) => {
-  return axios.post('class/saveclass', params)
-}
+  return axios.post('class/saveclass', params);
+};
 api.deleteClass = (params) => {
-  return axios.get('class/deleteclass?ids=' + params)
-}
+  return axios.get('class/deleteclass?ids=' + params);
+};
 api.getClassById = (params) => {
-  return axios.get('class/getclassbyid?id=' + params)
-}
+  return axios.get('class/getclassbyid?id=' + params);
+};
 api.getCollegeList = (params) => {
-  return axios.get('college/getcollegepage', params)
-}
+  return axios.get('college/getcollegepage', params);
+};
 api.getMajorList = (params) => {
-  return axios.get('major/getmajorbycollege', params)
-}
-export default api
+  return axios.get('major/getmajorbycollege', params);
+};
+export default api;
