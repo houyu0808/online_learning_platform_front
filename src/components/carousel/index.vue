@@ -1,5 +1,5 @@
 <template>
-  <el-carousel :interval="4000" type="card" :height="bannerHeight + 'px'">
+  <el-carousel :interval="4000" type="card" :height="bannerHeight + 'px'" class="carousel-box">
     <el-carousel-item v-for="item in carouselImage" :key="item.id">
       <a href=""><img :src="item.imageUrl" alt="item.name" class="carousel"></a>
     </el-carousel-item>
@@ -30,10 +30,14 @@ export default {
   },
   mounted() {
     this.screenWidth = window.innerWidth;
-    this.bannerHeight = 540 * this.screenWidth / 1920;
+    this.bannerHeight = 535 * this.screenWidth / 1920;
     window.onresize = () => {
-      this.screenWidth = window.innerWidth;
-      this.bannerHeight = 540 * this.screenWidth / 1920;
+      if (window.innerWidth > 1400){
+        this.screenWidth = window.innerWidth;
+        this.bannerHeight = 535 * this.screenWidth / 1920;
+      } else {
+        this.bannerHeight = 393.75;
+      }
     };
   }
 };

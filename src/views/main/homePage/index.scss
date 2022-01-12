@@ -1,18 +1,39 @@
 .main-body{
-  height: 1000px;
+  min-width: 1400px;
   .extension{
     display: flex;
     /*实现垂直居中*/
     align-items: center;
     width: 100%;
     margin: 0 auto;
+    margin-top: 1rem;
     .extension-logo{
       height: 3rem;
     }
   }
+  /deep/ .el-card{
+    width: 192px;
+    height: 160px;
+    margin-top: 1rem;
+    border-radius: 2%;
+    border: none;
+  }
   .image-card{
     width: 192px;
     height: 108px;
+  }
+  .title-author{
+    .title{
+      display: inline-block;
+    }
+    .author{
+      display: inline-block;
+      font-size: 0.7rem;
+      color: gray;
+    }
+  }
+  .video-play{
+    margin-top: 1rem;
   }
 }
 

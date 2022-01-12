@@ -18,5 +18,6 @@ body {
 }
 #app {
   height: 100vh;
+  min-width: 1400px;
 }
 </style>

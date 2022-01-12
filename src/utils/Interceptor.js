@@ -17,6 +17,9 @@ axios.interceptors.response.use(
     if (response.headers.token) {
       localStorage.setItem('token', response.headers.token);
     }
+    if (response.data.result === 'token验证失败!'){
+      this.$message.warning('登录即过期,请退出重新登录！');
+    }
     return response;
   }
 );
