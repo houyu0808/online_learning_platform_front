@@ -1,0 +1,11 @@
+.homePage{
+  .nav-bar{
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0 2px 10px 0 rgb(226, 226, 226);
+  }
+  .main{
+    padding-top: 60px;
+  }
+}

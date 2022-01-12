@@ -70,12 +70,12 @@
       <el-table-column
         prop="belongCourseName"
         sortable="custom"
-        label="视频编码"
+        label="所属课程"
       ></el-table-column>
       <el-table-column
         prop="belongTeacherName"
         sortable="custom"
-        label="视频编码"
+        label="任课教师"
       ></el-table-column>
       <el-table-column prop="operation" label="操作">
         <template v-slot="{ row }">

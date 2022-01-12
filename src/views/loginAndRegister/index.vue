@@ -378,8 +378,8 @@ export default {
       userLogin(this.form).then((res) => {
         this.loadStatus = false;
         if (res.status === 200) {
-          this.$message.success(res.result);
-          localStorage.setItem("username", this.form.username);
+          this.$message.success('登陆成功');
+          localStorage.setItem('username', res.result);
           this.$router.push("/home");
         } else {
           this.$message.error(res.message);

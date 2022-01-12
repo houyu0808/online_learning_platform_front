@@ -1,0 +1,18 @@
+.main-body{
+  height: 1000px;
+  .extension{
+    display: flex;
+    /*实现垂直居中*/
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    .extension-logo{
+      height: 3rem;
+    }
+  }
+  .image-card{
+    width: 192px;
+    height: 108px;
+  }
+}
+

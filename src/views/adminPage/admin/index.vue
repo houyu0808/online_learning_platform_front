@@ -35,6 +35,9 @@
                 >登录</el-button
               >
             </el-form-item>
+            <el-form-item class="back-button">
+              <el-button class="back-homepage" @click="backHomepage" type="text">回到用户登录页面</el-button>
+            </el-form-item>
           </el-form>
         </div>
       </el-col>
@@ -64,7 +67,8 @@ export default {
       this.loadStatus = true;
       adminLogin(this.form).then((res) => {
         if (res.status === 200) {
-          this.$message.success(res.result);
+          this.$message.success(res.message);
+          localStorage.setItem('username', res.result);
           this.$router.replace({
             path: "/college-manage",
             params: { username: this.form.username },
@@ -75,6 +79,9 @@ export default {
         this.loadStatus = false;
       });
     },
+    backHomepage() {
+      this.$router.push('/');
+    }
   },
   beforeCreate() {
     if (localStorage.getItem("token") !== null) {

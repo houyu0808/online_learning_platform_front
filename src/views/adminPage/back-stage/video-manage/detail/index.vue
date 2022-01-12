@@ -141,7 +141,7 @@ export default {
       formData.append('id', this.tableForm.id);
       formData.append('videoCode', this.tableForm.videoCode);
       formData.append('belongCourseCode', this.tableForm.belongCourseCode);
-      formData.append('belongCourseCode', this.tableForm.belongTeacherCode);
+      formData.append('belongTeacherCode', this.tableForm.belongTeacherCode);
       this.$refs.form.validate((valid) => {
         if (valid) {
           if (this.id) {
