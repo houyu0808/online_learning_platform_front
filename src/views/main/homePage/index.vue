@@ -9,12 +9,12 @@
           <el-row>
             <el-col :span="16">
               <el-row class="left-box">
-                <el-col :span="4" v-for="(o, index) in 8" :key="o" :offset="index % 4 == 0 ? 0 : 2">
+                <el-col :span="4" v-for="(item, index) in extensionList" :key="item.id" :offset="index % 4 == 0 ? 0 : 2">
                   <el-card :body-style="{ padding: '0px' }" shadow="hover">
-                    <img src="" class="image-card">
+                    <img :src="item.imageUrl" class="image-card">
                     <div class="title-author">
-                      <span class="title">C语言程序设计</span><br>
-                      <span class="author">xx老师</span>
+                      <span class="title">{{ item.name }}</span><br>
+                      <span class="author">{{ item.belongTeacherName }}</span>
                     </div>
                   </el-card>
                 </el-col>
@@ -22,7 +22,7 @@
             </el-col>
             <el-col :span="8">
               <div class="video-play">
-                <video-player></video-player>
+                <video-player :videoUrl="extensionList[0].videoUrl" :imageUrl="extensionList[0].imageUrl"></video-player>
               </div>
             </el-col>
           </el-row>
@@ -46,7 +46,7 @@
       </el-row>
       <el-row type="flex" class="main-body" justify="center">
         <el-col :span="22">
-          <div class="extension"><img :src="hotImage" alt="" class="extension-logo">&nbsp;</div>
+          <div class="extension"><img :src="recommend" alt="" class="extension-logo">&nbsp;名师推荐</div>
             <el-row class="left-box">
               <el-col :span="4" v-for="o in 6" :key="o">
                 <el-card :body-style="{ padding: '0px' }" shadow="hover">
@@ -68,6 +68,8 @@ import carousel from '../../../components/carousel/index.vue';
 import extension from '../../../assets/icon/推广.png';
 import videoPlayer from '../../../components/video-player/index.vue';
 import hotImage from '../../../assets/icon/热门.png';
+import recommend from '../../../assets/icon/推荐.png';
+import api from '../../../service/mainPage';
 
 export default {
   name: 'index',
@@ -78,8 +80,23 @@ export default {
   data () {
     return {
       extensionImage: extension,
-      hotImage: hotImage
+      hotImage: hotImage,
+      recommend: recommend,
+      extensionList: []
     };
+  },
+  methods: {
+    getExtension() {
+      api.getExtensionList().then(res => {
+        this.extensionList = res.result;
+      });
+    },
+    getRecommendTeacher(){
+      
+    }
+  },
+  created () {
+    this.getExtension();
   }
 };
 </script>
