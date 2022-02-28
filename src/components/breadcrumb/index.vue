@@ -68,6 +68,7 @@ export default {
       this.$router.replace("/admin");
       localStorage.removeItem("token");
       localStorage.removeItem('username');
+      localStorage.removeItem('userIdentify');
     },
     setWelcomeWorld() {
       const nowTime = new Date();

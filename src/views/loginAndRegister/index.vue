@@ -380,6 +380,7 @@ export default {
         if (res.status === 200) {
           this.$message.success('登陆成功');
           localStorage.setItem('username', res.result);
+          localStorage.setItem('userIdentify', this.identify);
           this.$router.push("/home");
         } else {
           this.$message.error(res.message);
@@ -473,7 +474,7 @@ export default {
   },
   beforeCreate() {
     // 判断用户登陆状态
-    if (localStorage.getItem("token") !== null) {
+    if (localStorage.getItem("token") !== null && localStorage.getItem("username") !== '超级管理员') {
       validateToken(localStorage.getItem("token")).then((res) => {
         if (res.status === 500) {
           this.$message.warning(res.message);

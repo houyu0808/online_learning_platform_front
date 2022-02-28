@@ -30,14 +30,14 @@
       </el-row>
       <el-row type="flex" class="main-body" justify="center">
         <el-col :span="22">
-          <div class="extension"><img :src="hotImage" alt="" class="extension-logo">&nbsp;专业热门</div>
+          <div class="extension"><img :src="hotImage" alt="" class="extension-logo">{{identify === '学生' ? '专业热门': '学院热门'}}</div>
             <el-row class="left-box">
-              <el-col :span="4" v-for="o in 6" :key="o">
+              <el-col :span="4" v-for="(item,index) in hotList.slice(0,6)" :key="index">
                 <el-card :body-style="{ padding: '0px' }" shadow="hover">
-                  <img src="" class="image-card">
+                  <img :src="item.imageUrl" class="image-card">
                   <div class="title-author">
-                    <span class="title">C语言程序设计</span><br>
-                    <span class="author">xx老师</span>
+                    <span class="title">{{ item.name }}</span><br>
+                    <span class="author">{{ item.belongTeacherName }}</span>
                   </div>
                 </el-card>
               </el-col>
@@ -46,7 +46,7 @@
       </el-row>
       <el-row type="flex" class="main-body" justify="center">
         <el-col :span="22">
-          <div class="extension"><img :src="recommend" alt="" class="extension-logo">&nbsp;名师推荐</div>
+          <div class="extension"><img :src="recommend" alt="" class="extension-logo">&nbsp;名师课程推荐</div>
             <el-row class="left-box">
               <el-col :span="4" v-for="o in 6" :key="o">
                 <el-card :body-style="{ padding: '0px' }" shadow="hover">
@@ -82,7 +82,11 @@ export default {
       extensionImage: extension,
       hotImage: hotImage,
       recommend: recommend,
-      extensionList: []
+      extensionList: [],
+      identify: '',
+      username: '',
+      information: {},
+      hotList: []
     };
   },
   methods: {
@@ -91,12 +95,35 @@ export default {
         this.extensionList = res.result;
       });
     },
+    getHotList(){
+      this.username = localStorage.getItem('username');
+      let that = this;
+      if (this.identify === '学生'){
+        api.getStudentInfo({username: this.username}).then(res => {
+          that.information = res.result;
+          localStorage.setItem('information', JSON.stringify(res.result));
+          api.getStudentHotList({majorCode: that.information.affiliatedMajorCode}).then(res => {
+            that.hotList = res.result;
+          });
+        });
+      } else {
+        api.getTeacherInfo({username: this.username}).then(res => {
+          that.information = res.result;
+          localStorage.setItem('information', JSON.stringify(res.result));
+          api.getTeacherHotList({collegeCode: that.information.affiliatedCollegeCode}).then(res => {
+            that.hotList = res.result;
+          });
+        });
+      }
+    },
     getRecommendTeacher(){
-      
+
     }
   },
   created () {
+    this.identify = localStorage.getItem('userIdentify');
     this.getExtension();
+    this.getHotList();
   }
 };
 </script>
