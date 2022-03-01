@@ -20,5 +20,11 @@ api.getStudentHotList = (params) => {
 api.getTeacherHotList = (params) => {
   return axios.get('common/getteacherhotlist', params);
 };
+api.getRecommendTeacher = () => {
+  return axios.get('common/getrecommendteacher');
+};
+api.addClickTimes = (param) => {
+  return axios.get('common/addclicktimes', param);
+};
 
 export default api;

@@ -2,8 +2,8 @@
   <div class="navbar clearfix">
     <el-breadcrumb class="breadcrumb-container" separator="/">
       <el-breadcrumb-item
-        v-for="item in levelList"
-        :key="item.path"
+        v-for="(item,index) in levelList"
+        :key="index"
         :to="{ path: item.path }"
       >
         {{ item.name }}

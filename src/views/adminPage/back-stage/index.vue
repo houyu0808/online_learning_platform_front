@@ -13,7 +13,7 @@
           router
         >
           <img class="menu-title" :src="menuImg" v-if="!isCollapse" alt="" />
-          <div v-for="item in menuList" :key="item.id">
+          <div v-for="(item,index) in menuList" :key="index">
             <el-menu-item :index="item.path">
               <i class="el-icon-menu"></i>
               <span slot="title">{{ item.name }}</span>

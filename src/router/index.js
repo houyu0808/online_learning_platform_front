@@ -24,6 +24,12 @@ const router = new Router({
           meta: {requireAuth: true}
         },
         {
+          path: '/learning-platform/videoPlayPage',
+          name: '视频播放',
+          component: () => import('../views/main/videoPlayPage/index'),
+          meta: {requireAuth: true}
+        },
+        {
           path: '/learning-platform/broadcast-center',
           name: '直播中心',
           component: () => import('../views/main/broadcastCenter/index'),
@@ -56,7 +62,7 @@ const router = new Router({
           meta: {requireAuth: true}
         },
         {
-          path: '/student-manage-detail',
+          path: '/student-manage/student-manage-detail',
           name: '编辑学生',
           component: () => import('../views/adminPage/back-stage/student-manage/detail/index'),
           meta: {requireAuth: true},
@@ -71,7 +77,7 @@ const router = new Router({
           meta: {requireAuth: true}
         },
         {
-          path: '/teacher-manage-detail',
+          path: '/teacher-manage/teacher-manage-detail',
           name: '编辑教师',
           component: () => import('../views/adminPage/back-stage/teacher-manage/detail/index'),
           meta: {requireAuth: true},
@@ -86,7 +92,7 @@ const router = new Router({
           meta: {requireAuth: true}
         },
         {
-          path: '/college-manage-detail',
+          path: '/college-manage/college-manage-detail',
           name: '编辑学院',
           component: () => import('../views/adminPage/back-stage/college-manage/detail/index'),
           meta: {requireAuth: true},
@@ -101,7 +107,7 @@ const router = new Router({
           meta: {requireAuth: true}
         },
         {
-          path: '/major-manage-detail',
+          path: '/major-manage/major-manage-detail',
           name: '编辑专业',
           component: () => import('../views/adminPage/back-stage/major-manage/detail/index'),
           meta: {requireAuth: true},
@@ -116,7 +122,7 @@ const router = new Router({
           meta: {requireAuth: true}
         },
         {
-          path: '/course-manage-detail',
+          path: '/course-manage/course-manage-detail',
           name: '编辑课程',
           component: () => import('../views/adminPage/back-stage/course-manage/detail/index'),
           meta: {requireAuth: true},
@@ -131,7 +137,7 @@ const router = new Router({
           meta: {requireAuth: true}
         },
         {
-          path: '/class-manage-detail',
+          path: '/class-manage/class-manage-detail',
           name: '编辑课程',
           component: () => import('../views/adminPage/back-stage/class-manage/detail/index'),
           meta: {requireAuth: true},
@@ -146,7 +152,7 @@ const router = new Router({
           meta: {requireAuth: true}
         },
         {
-          path: '/video-manage-detail',
+          path: '/video-manage/video-manage-detail',
           name: '编辑课程',
           component: () => import('../views/adminPage/back-stage/video-manage/detail/index'),
           meta: {requireAuth: true},

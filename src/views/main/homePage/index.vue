@@ -10,7 +10,7 @@
             <el-col :span="16">
               <el-row class="left-box">
                 <el-col :span="4" v-for="(item, index) in extensionList" :key="item.id" :offset="index % 4 == 0 ? 0 : 2">
-                  <el-card :body-style="{ padding: '0px' }" shadow="hover">
+                  <el-card :body-style="{ padding: '0px' }" shadow="hover" @click.native="toVideoPage(item.id)">
                     <img :src="item.imageUrl" class="image-card">
                     <div class="title-author">
                       <span class="title">{{ item.name }}</span><br>
@@ -33,7 +33,7 @@
           <div class="extension"><img :src="hotImage" alt="" class="extension-logo">{{identify === '学生' ? '专业热门': '学院热门'}}</div>
             <el-row class="left-box">
               <el-col :span="4" v-for="(item,index) in hotList.slice(0,6)" :key="index">
-                <el-card :body-style="{ padding: '0px' }" shadow="hover">
+                <el-card :body-style="{ padding: '0px' }" shadow="hover" @click.native="toVideoPage(item.id)">
                   <img :src="item.imageUrl" class="image-card">
                   <div class="title-author">
                     <span class="title">{{ item.name }}</span><br>
@@ -48,12 +48,12 @@
         <el-col :span="22">
           <div class="extension"><img :src="recommend" alt="" class="extension-logo">&nbsp;名师课程推荐</div>
             <el-row class="left-box">
-              <el-col :span="4" v-for="o in 6" :key="o">
-                <el-card :body-style="{ padding: '0px' }" shadow="hover">
-                  <img src="" class="image-card">
+              <el-col :span="4" v-for="(item,index) in recommendList.slice(0,6)" :key="index">
+                <el-card :body-style="{ padding: '0px' }" shadow="hover" @click.native="toVideoPage(item.id)">
+                  <img :src="item.imageUrl" class="image-card">
                   <div class="title-author">
-                    <span class="title">C语言程序设计</span><br>
-                    <span class="author">xx老师</span>
+                    <span class="title">{{ item.name }}</span><br>
+                    <span class="author">{{ item.belongTeacherName }}</span>
                   </div>
                 </el-card>
               </el-col>
@@ -86,7 +86,8 @@ export default {
       identify: '',
       username: '',
       information: {},
-      hotList: []
+      hotList: [],
+      recommendList: []
     };
   },
   methods: {
@@ -117,13 +118,25 @@ export default {
       }
     },
     getRecommendTeacher(){
-
+      let that = this;
+      api.getRecommendTeacher().then(res => {
+        that.recommendList = res.result;
+      });
+    },
+    toVideoPage(id){
+      this.$router.push({
+        path: '/learning-platform/videoPlayPage',
+        query: {
+          id: id
+        }
+      });
     }
   },
   created () {
     this.identify = localStorage.getItem('userIdentify');
     this.getExtension();
     this.getHotList();
+    this.getRecommendTeacher();
   }
 };
 </script>

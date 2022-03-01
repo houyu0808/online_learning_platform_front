@@ -1,7 +1,7 @@
 <template>
   <el-main class="main-box">
     <div class="operation-box">
-      <el-button type="primary" @click="addOrEdit('/video-manage-detail')"
+      <el-button type="primary" @click="addOrEdit('/video-manage/video-manage-detail')"
         >新建</el-button
       >
       <el-button @click="batchDelete(selectedList, true, message)"
@@ -82,7 +82,7 @@
           <el-button
             type="text"
             class="jh-button-wider"
-            @click="addOrEdit('/video-manage-detail', row.id)"
+            @click="addOrEdit('/video-manage/video-manage-detail', row.id)"
             >修改</el-button
           >
           <el-button
