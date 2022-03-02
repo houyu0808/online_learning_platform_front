@@ -23,8 +23,14 @@ api.getTeacherHotList = (params) => {
 api.getRecommendTeacher = () => {
   return axios.get('common/getrecommendteacher');
 };
-api.addClickTimes = (param) => {
-  return axios.get('common/addclicktimes', param);
+api.addClickTimes = (params) => {
+  return axios.get('common/addclicktimes', params);
+};
+api.getVideoInfo = (params) => {
+  return axios.get('common/getvideoinfo', params);
+};
+api.getVideoList = (params) => {
+  return axios.get('common/getvideolist', params);
 };
 
 export default api;

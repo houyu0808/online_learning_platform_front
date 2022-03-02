@@ -31,13 +31,17 @@ export default {
     imageUrl: {
       type: String,
       default: ''
+    },
+    autoplay: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
     return {
       playerOptions: {
-        playbackRates: [0.7, 1.0, 1.5, 2.0], // 播放速度
-        autoplay: false, // 如果true,浏览器准备好时开始回放。
+        playbackRates: [0.5, 1.0, 1.5, 2.0], // 播放速度
+        autoplay: this.autoplay, // 如果true,浏览器准备好时开始回放。
         muted: false, // 默认情况下将会消除任何音频。
         loop: false, // 导致视频一结束就重新开始。
         preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
@@ -50,7 +54,6 @@ export default {
         }],
         hls: true,
         poster: this.imageUrl, // 你的封面地址
-        width: document.documentElement.clientWidth, // 播放器宽度
         notSupportedMessage: '此视频暂无法播放，请稍后再试', // 允许覆盖Video.js无法播放媒体源时显示的默认信息。
         controlBar: {
           timeDivider: true, // 时间分割线

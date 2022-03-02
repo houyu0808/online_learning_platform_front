@@ -15,13 +15,13 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "dplayer": "^1.26.0",
     "element-ui": "^2.15.6",
     "hls.js": "^1.1.5",
     "node-sass": "^4.14.1",
     "sass-loader": "^7.3.1",
     "video-player": "^0.0.1",
     "vue": "^2.5.2",
+    "vue-dplayer": "0.0.10",
     "vue-router": "^3.0.1",
     "vue-video-player": "^5.0.2",
     "vuex": "^4.0.2"

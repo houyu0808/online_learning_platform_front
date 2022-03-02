@@ -4,7 +4,7 @@
         <el-col :span="24"><carousel></carousel></el-col>
       </el-row>
       <el-row type="flex" class="main-body" justify="center">
-        <el-col :span="22">
+        <el-col :span="24">
           <div class="extension"><img :src="extensionImage" alt="" class="extension-logo">&nbsp;推广</div>
           <el-row>
             <el-col :span="16">
@@ -29,7 +29,7 @@
         </el-col>
       </el-row>
       <el-row type="flex" class="main-body" justify="center">
-        <el-col :span="22">
+        <el-col :span="24">
           <div class="extension"><img :src="hotImage" alt="" class="extension-logo">{{identify === '学生' ? '专业热门': '学院热门'}}</div>
             <el-row class="left-box">
               <el-col :span="4" v-for="(item,index) in hotList.slice(0,6)" :key="index">
@@ -45,7 +45,7 @@
         </el-col>
       </el-row>
       <el-row type="flex" class="main-body" justify="center">
-        <el-col :span="22">
+        <el-col :span="24">
           <div class="extension"><img :src="recommend" alt="" class="extension-logo">&nbsp;名师课程推荐</div>
             <el-row class="left-box">
               <el-col :span="4" v-for="(item,index) in recommendList.slice(0,6)" :key="index">
