@@ -32,5 +32,8 @@ api.getVideoInfo = (params) => {
 api.getVideoList = (params) => {
   return axios.get('common/getvideolist', params);
 };
+api.getTeacher = (params) => {
+  return axios.get('common/getteacherinfo', params);
+};
 
 export default api;

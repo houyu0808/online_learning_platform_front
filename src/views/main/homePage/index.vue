@@ -92,8 +92,9 @@ export default {
   },
   methods: {
     getExtension() {
+      let that = this;
       api.getExtensionList().then(res => {
-        this.extensionList = res.result;
+        that.extensionList = res.result;
       });
     },
     getHotList(){

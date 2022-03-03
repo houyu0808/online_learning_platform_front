@@ -43,6 +43,47 @@
       //min-height: 493px;
       //max-height: 721px;
     }
+    .tip-info{
+      width: 100%;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+      img{
+        width: 13px;
+        height: 13px;
+        margin-right: 5px;
+      }
+      span{
+        font-size: 12px;
+        height: 16px;
+        color: #999;
+        display: flex;
+        align-items: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+    .line{
+      width: 100%;
+      height: 1px;
+      border: none;
+      background: #e5e9ef;
+      margin: 5px 0 5px 0;
+    }
+    .introduce-box{
+      .tip-text{
+        font-size: 15px;
+        font-weight: bold;
+        color: #222222;
+        margin: 15px 0 5px 0;
+      }
+      .video-text{
+        font-size: 14px;
+        color: #222222;
+        margin: 0;
+      }
+    }
   }
   .right-box{
     width: 320px;
@@ -61,14 +102,87 @@
         width: 40px;
         height: 40px;
       }
-      span{
-        width: 100px;
-        height: 1.2rem;
-        font-size: 1rem;
-        margin-left: 15px;
-        color: #FB7299;
+      .t-info{
+        height: 40px;
+        .name{
+          width: 100px;
+          height: 23px;
+          font-size: 14px;
+          margin-left: 15px;
+          color: #FB7299;
+        }
+        .autograph{
+          height: 13px;
+          margin-left: 15px;
+          font-size: 12px;
+          color: #999999;
+        }
+      }
+
+    }
+    .other-recommend{
+      width: 305px;
+      height: 40px;
+      margin-bottom: 20px;
+      background: #F4F4F4;
+      display: flex;
+      align-items: center;
+      padding-left: 15px;
+      font-size: 15px;
+      font-weight: bold;
+      color: #222;
+    }
+    .other-video{
+      width: 100%;
+      height: 540px;
+      border: none;
+      .video-page-card{
+        width: 100%;
+        height: 90px;
+        border: none;
+        padding: 6px 0;
+        display: flex;
+        &:hover{
+          opacity: 0.9;
+          cursor: pointer;
+        }
+        .pic-box{
+          width: 160px;
+          height: 100%;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .info-box{
+          height: 100%;
+          width: 155px;
+          align-items: center;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          padding-left: 5px;
+          span{
+            color: #999;
+            display: flex;
+            font-size: 12px;
+            height: 20px;
+            line-height: 20px;
+          }
+          .video-name{
+            width: 158.5px;
+            color: black;
+            font-size: 14px;
+            font-weight: 400;
+            height: 40px;
+            margin: 0 0 8px 0;
+            word-wrap: break-word;
+            overflow: hidden;
+            &:hover{
+              color: #1890ff;
+            }
+          }
+        }
       }
     }
-
   }
 }

@@ -84,6 +84,10 @@
             </el-option>
           </el-select>
         </el-form-item>
+        <el-form-item label="视频介绍：" prop="videoIntroduce">
+          <textarea maxlength="100" v-model="tableForm.videoIntroduce" class="video-introduce" />
+          <p class="tip-count">{{ tableForm.videoIntroduce.length }}/100</p>
+        </el-form-item>
       </el-form>
       <div class="button-box">
         <el-button type="primary" @click="save">{{
@@ -111,7 +115,8 @@ export default {
         belongTeacherCode: '',
         belongCourseCode: '',
         imageUrl: '',
-        videoUrl: ''
+        videoUrl: '',
+        videoIntroduce: ''
       },
       file1: {},
       file2: {},
@@ -142,6 +147,7 @@ export default {
       formData.append('videoCode', this.tableForm.videoCode);
       formData.append('belongCourseCode', this.tableForm.belongCourseCode);
       formData.append('belongTeacherCode', this.tableForm.belongTeacherCode);
+      formData.append('videoIntroduce', this.tableForm.videoIntroduce);
       this.$refs.form.validate((valid) => {
         if (valid) {
           if (this.id) {
