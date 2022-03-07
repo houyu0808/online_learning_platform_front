@@ -37,8 +37,14 @@ const router = new Router({
         },
         {
           path: '/learning-platform/task-list',
-          name: '任务清单',
+          name: '任务中心',
           component: () => import('../views/main/taskList/index'),
+          meta: {requireAuth: true}
+        },
+        {
+          path: '/learning-platform/task-center',
+          name: '任务中心',
+          component: () => import('../views/main/taskCenter/index'),
           meta: {requireAuth: true}
         }
       ]

@@ -12,7 +12,8 @@
     >
       <el-menu-item index="/learning-platform/"><img :src="mainLogo" class="mainLogo" alt=""> 首页</el-menu-item>
       <el-menu-item index="/learning-platform/broadcast-center">直播中心</el-menu-item>
-      <el-menu-item index="/learning-platform/task-list">任务清单</el-menu-item>
+      <el-menu-item index="/learning-platform/task-list" v-if="identify === '学生'">任务列表</el-menu-item>
+      <el-menu-item index="/learning-platform/task-center" v-if="identify === '教师'">任务中心</el-menu-item>
       <el-menu-item index="4" disabled>论坛中心</el-menu-item>
       <el-menu-item index="5" disabled>自测评估</el-menu-item>
       <el-popover
@@ -55,6 +56,7 @@ export default {
       mainLogo: mainLogo,
       welcome: "",
       username: "",
+      identify: ""
     };
   },
   methods: {
@@ -89,6 +91,7 @@ export default {
   created() {
     this.setWelcomeWorld();
     this.username = localStorage.getItem('username');
+    this.identify = localStorage.getItem('userIdentify');
   },
 };
 </script>

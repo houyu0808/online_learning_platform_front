@@ -105,7 +105,7 @@
           </div>
           <div class="recommend-today">今日推荐</div>
           <div class="rec-video">
-            <div class="video-page-card" v-for="(item,index) in otherVideo.slice(0,5)" :key="index" @click="toVideoPage(item.id)">
+            <div class="video-page-card" v-for="(item,index) in recommendList.slice(0,5)" :key="index" @click="toVideoPage(item.id)">
               <div class="pic-box">
                 <img :src="item.imageUrl" :alt="item.name">
               </div>
@@ -136,6 +136,7 @@ export default {
       otherVideo: [],
       teacher: {},
       commentList: [],
+      recommendList: [],
       commentInfo: {
         commentText: "",
         belongVideoId: 5,
@@ -176,6 +177,7 @@ export default {
         that.getTeacherVideoList(that.video.belongTeacherCode);
         that.getTeacherInfo(that.video.belongTeacherCode);
         that.getComments(that.video.id);
+        that.getTodayRecommend();
       });
     },
     // 获取教师其他课程列表
@@ -210,6 +212,12 @@ export default {
         }
       });
     },
+    getTodayRecommend(){
+      let that = this;
+      api.getTodayRecommend().then(res => {
+        that.recommendList = res.result;
+      });
+    },
     // 跳转至其他视频页面
     toVideoPage(id){
       this.$router.push({
@@ -241,7 +249,7 @@ export default {
           this.commentInfo.belongVideoId = this.id;
           let that = this;
           commentApi.addComments(this.commentInfo).then(res => {
-            this.$message.success(res.result);
+            this.$message.success(res.message);
             that.getComments(that.id);
             that.commentInfo.commentText = "";
           });
@@ -262,7 +270,7 @@ export default {
           this.replyInfo.belongCommentId = id;
           let that = this;
           commentApi.addChildComments(this.replyInfo).then(res => {
-            this.$message.success(res.result);
+            this.$message.success(res.message);
             that.getComments(this.id);
             that.replyInfo.commentText = "";
           });
