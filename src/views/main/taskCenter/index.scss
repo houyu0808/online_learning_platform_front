@@ -1,9 +1,117 @@
 .container{
-  width: 1100px;
+  width: 100%;
   height: 100%;
-  margin: 0 auto;
-  .teacher-info-box{
-    height: 100px;
-    background: #1890ff;
+  margin: 0;
+  background: #F4F5F7;
+  .contain-box{
+    width: 1100px;
+    margin: 0 auto;
+    .teacher-info-box{
+      width: 100%;
+      .user-info{
+        padding-top: 100px;
+        height: 80px;
+        width: 100%;
+        display: flex;
+        img{
+          width: 50px;
+          height: 50px;
+          margin-left: 50px;
+          border: white 2px solid;
+          border-radius: 50%;
+        }
+        .user-item{
+          margin-left: 20px;
+          color: white;
+          display: flex;
+          .username{
+            font-weight: 700;
+            line-height: 18px;
+            font-size: 18px;
+            vertical-align: middle;
+            height: 18px;
+            margin-bottom: 10px;
+          }
+          .user-autograph{
+            background: transparent;
+            border-radius: 4px;
+            border: none;
+            box-shadow: none;
+            color: hsla(0,0%,100%,.8);
+            font-size: 12px;
+            line-height: 26px;
+            height: 26px;
+            margin-left: -5px;
+            padding: 0 5px;
+            position: relative;
+            top: -1px;
+            width: 730px;
+          }
+        }
+        .add-task{
+          margin-left: 60px;
+        }
+      }
+    }
+    .task-list-box{
+      border-radius: 10px;
+    }
+  }
+  .add-task-box{
+    textarea{
+      width: 220px;
+      height: 80px;
+      outline: none;
+      resize: none;
+      border: 1px solid #DCDFE6;
+    }
+  }
+  .tab-change{
+    .page-footer{
+      margin-top: 10px;
+      float: right;
+    }
+    .student-detail{
+      width: 100%;
+      height: 100%;
+      .select-task{
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        span{
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+  /deep/ .el-table{
+    border-radius: 10px;
+  }
+  /deep/ .el-tabs__header{
+    background: white;
+    height: 50px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  /deep/ .el-tabs__nav-wrap{
+    height: 50px;
+  }
+  /deep/ .el-tabs__nav-scroll{
+    height: 50px;
+  }
+  /deep/ .el-tabs__nav{
+    margin-left: 20px;
+    height: 50px;
+  }
+  /deep/ .el-tabs__nav-wrap::after{
+    display: none;
+  }
+  /deep/ .el-tabs__item{
+    height: 50px;
+    line-height: 50px;
+  }
+  /deep/ .el-tab-pane{
+    background: white;
+    border-radius: 10px;
   }
 }

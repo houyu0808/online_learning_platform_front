@@ -1,7 +1,7 @@
 <template>
   <el-carousel :interval="4000" type="card" :height="bannerHeight + 'px'" class="carousel-box">
     <el-carousel-item v-for="item in carouselImage" :key="item.id">
-      <a href=""><img :src="item.imageUrl" alt="item.name" class="carousel"></a>
+      <a :href="'/learning-platform/videoPlayPage?id=' + item.id" ><img :src="item.imageUrl" alt="item.name" class="carousel"></a>
     </el-carousel-item>
   </el-carousel>
 </template>
