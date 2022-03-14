@@ -9,7 +9,7 @@
               <div class="username">{{ userInfo.username }}</div>
               <div class="user-autograph">{{ userInfo.autograph }}</div>
             </div>
-            <div class="add-task"><el-button type="primary" @click="openAddBox">发布任务</el-button></div>
+            <div class="add-task"><el-button type="primary" @click="openAddBox" v-if="activeName === 'first'">发布任务</el-button></div>
           </div>
         </div>
         </div>
@@ -88,7 +88,7 @@
               <div class="student-detail">
                 <div class="select-task">
                   <span>选择任务:</span>
-                  <el-select v-model="taskId" placeholder="请选择">
+                  <el-select v-model="taskId" placeholder="请选择" @change="getTaskClass">
                     <el-option
                       v-for="item in taskList"
                       :key="item.id"
@@ -97,10 +97,64 @@
                     </el-option>
                   </el-select>
                 </div>
+                <div class="task-class-list">
+                  <el-table
+                    :data="taskClassList"
+                    border
+                    style="width: 100%"
+                    :cell-style="tableCellStyle">
+                    <el-table-column
+                      prop="id"
+                      label="ID"
+                      sortable
+                      width="60">
+                    </el-table-column>
+                    <el-table-column
+                      prop="stuNumber"
+                      label="学号"
+                      width="120">
+                    </el-table-column>
+                    <el-table-column
+                      prop="stuName"
+                      label="姓名"
+                      width="120">
+                    </el-table-column>
+                    <el-table-column
+                      prop="belongClassName"
+                      label="班级"
+                      width="180">
+                    </el-table-column>
+                    <el-table-column
+                      prop="status"
+                      label="状态"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                      label="操作"
+                      width="100"
+                      v-if="taskClassList.status === '完成'">
+                      <template slot-scope="scope">
+                        <el-button @click="download(scope.row)" type="text" size="small">下载</el-button>
+                      </template>
+                    </el-table-column>
+                  </el-table>
+                  <el-footer class="page-footer">
+                    <el-pagination
+                      v-show="pageInfo.totalElements > 0"
+                      background
+                      :total="pageInfo.totalElements"
+                      @size-change="handleSizeChange2"
+                      @current-change="handleCurrentChange2"
+                      :layout="pageInfo.layout"
+                      :current-page.sync="pageInfo.page"
+                      :page-sizes="pageInfo.pageSizes"
+                      :page-size="pageInfo.size"
+                    >
+                    </el-pagination>
+                  </el-footer>
+                </div>
               </div>
             </el-tab-pane>
-            <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
-            <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
           </el-tabs>
         </div>
       </div>
@@ -192,6 +246,14 @@ export default {
         totalElements: 0,
         totalPages: 0
       },
+      page2Info: {
+        layout: 'total,prev,pager,next,sizes,jumper',
+        pageSizes: [10, 20, 30, 40],
+        page: 1,
+        size: 10,
+        totalElements: 0,
+        totalPages: 0
+      },
       taskList: [],
       activeName: 'first',
       dialogVisible: false,
@@ -210,7 +272,8 @@ export default {
         startTime: [{ required: true, trigger: 'blur', message: '必填项' }],
         endTime: [{ required: true, trigger: 'blur', message: '必填项' }]
       },
-      taskId: ''
+      taskId: '',
+      taskClassList: []
     };
   },
   methods: {
@@ -237,11 +300,13 @@ export default {
           that.taskList[i].endTime = that.timeReversal(endTime);
           that.taskList[i].status = endTime.getTime() > nowTime.getTime() ? '进行中' : '已结束';
         }
+        that.getTaskClass();
       });
     },
     handleClick(row) {
       this.activeName = 'second';
       this.taskId = row.id;
+      this.getTaskClass();
     },
     // 删除任务
     handleDelete(row){
@@ -259,6 +324,14 @@ export default {
     handleSizeChange(e) {
       this.pageInfo.size = e;
       this.getTaskList();
+    },
+    handleCurrentChange2(e) {
+      this.page2Info.page = e;
+      this.getTaskClass();
+    },
+    handleSizeChange2(e) {
+      this.page2Info.size = e;
+      this.getTaskClass();
     },
     handleClose(done) {
       done();
@@ -314,7 +387,7 @@ export default {
     },
     tableCellStyle({row, column, rowIndex, columnIndex}){
       if (column.label === '状态'){
-        if (row['status'] === '进行中'){
+        if (row['status'] === '进行中' || row['status'] === '完成'){
           return {
             color: 'green'
           };
@@ -324,6 +397,24 @@ export default {
           };
         }
       }
+    },
+    getTaskClass(){
+      let params = {
+        taskId: this.taskId,
+        ...this.pageInfo
+      };
+      params.page = params.page - 1;
+      delete params.totalElements;
+      delete params.pageSizes;
+      delete params.totalPages;
+      delete params.layout;
+      let that = this;
+      api.getTaskClassPage(params).then(res => {
+        that.taskClassList = res.result.content;
+      });
+    },
+    download(row){
+      console.log(row);
     }
   },
   created () {

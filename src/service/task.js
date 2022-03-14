@@ -14,5 +14,8 @@ api.deleteTask = (params) => {
 api.getClassList = (params) => {
   return axios.get("class/getclassbycollege", params);
 };
+api.getTaskClassPage = (params) => {
+  return axios.get("task/gettaskclasspage", params);
+};
 
 export default api;
