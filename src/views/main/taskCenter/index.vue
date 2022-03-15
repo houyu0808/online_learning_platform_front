@@ -196,7 +196,7 @@
                 size="small"
                 type="primary"
               >选取文件</el-button>
-              <div slot="tip" class="el-upload__tip">只能上传word/excel文件(仅一份文件)且不超过1MB</div>
+              <div slot="tip" class="el-upload__tip">只能上传word文件(仅一份文件)且不超过1MB</div>
             </el-upload>
           </el-form-item>
           <el-form-item label="开始时间" prop="startTime">
@@ -359,6 +359,7 @@ export default {
       formData.append('endTime', this.taskForm.endTime);
       formData.append('comment', this.taskForm.comment);
       formData.append('publisherCode', this.userInfo.employeeNumber);
+      formData.append('publisherName', this.userInfo.username);
       this.$refs.form.validate((valid) => {
         if (valid) {
           api.addTask(formData).then(res => {

@@ -17,5 +17,14 @@ api.getClassList = (params) => {
 api.getTaskClassPage = (params) => {
   return axios.get("task/gettaskclasspage", params);
 };
+api.getStudentTaskList = (params) => {
+  return axios.get("task/getstudenttasklist", params);
+};
+api.downloadFile = (params) => {
+  return axios.get("task/downloadfile", params);
+};
+api.uploadFile = (params) => {
+  return axios.post("task/uploadfile", params);
+};
 
 export default api;

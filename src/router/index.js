@@ -172,6 +172,7 @@ const router = new Router({
 });
 
 router.beforeEach(function(to, from, next) {
+  document.documentElement.scrollTop = 0;
   if (!localStorage.getItem("token")) {
     if (to.path !== '/' && to.meta.requireAuth) {
       return next('/');
