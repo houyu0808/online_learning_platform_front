@@ -26,5 +26,8 @@ api.downloadFile = (params) => {
 api.uploadFile = (params) => {
   return axios.post("task/uploadfile", params);
 };
+api.getStudentTaskClass = (params) => {
+  return axios.get("task/getstudenttaskclass", params);
+};
 
 export default api;

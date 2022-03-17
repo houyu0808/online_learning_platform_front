@@ -25,11 +25,13 @@
           </el-table-column>
           <el-table-column
             prop="startTime"
-            label="开始时间">
+            label="开始时间"
+            width="150">
           </el-table-column>
           <el-table-column
             prop="endTime"
-            label="结束时间">
+            label="结束时间"
+            width="150">
           </el-table-column>
           <el-table-column
             prop="publisherName"
@@ -38,6 +40,10 @@
           <el-table-column
             prop="status"
             label="状态">
+          </el-table-column>
+          <el-table-column
+            prop="uploadStatus"
+            label="任务进度">
           </el-table-column>
           <el-table-column
             prop="comment"
@@ -50,18 +56,7 @@
             width="100">
             <template slot-scope="scope">
               <el-button @click="downloadFile(scope.row)" type="text" size="small">下载</el-button>
-              <el-upload
-                class="upload-video"
-                ref="upload-video"
-                action=""
-                :limit="1"
-                :before-upload="beforeUploadForm"
-                :http-request="fileChange"
-                :file-list="file"
-                :auto-upload="false"
-              >
-                <el-button @click="uploadFile(scope.row)" type="text" size="small">上传</el-button>
-              </el-upload>
+              <el-button @click="uploadFile(scope.row)" type="text" size="small">上传</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -81,6 +76,28 @@
         </el-footer>
       </div>
     </div>
+    <el-dialog
+      title="文件上传"
+      :visible.sync="dialogVisible"
+      width="400px"
+      :before-close="handleClose">
+      <div>
+        <el-upload
+          class="upload-demo"
+          drag
+          :on-change="fileChange"
+          action=""
+          limit="1"
+          :auto-upload="false">
+          <i class="el-icon-upload"></i>
+          <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+          <div class="el-upload__tip" slot="tip">只能上传doc/docx文件，且不超过5MB</div>
+        </el-upload>
+      </div>
+      <div style="margin-top: 10px;height: 30px">
+        <el-button type="primary" @click="submit()" style="float: right">确定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -107,11 +124,14 @@ export default {
         totalPages: 0
       },
       file: null,
-      fileData: null
+      fileData: null,
+      dialogVisible: false,
+      taskClass: []
     };
   },
   methods: {
-    getStudentTaskList(){
+    async getStudentTaskList(){
+      await this.getStudentTaskClass();
       let params = {
         classCode: this.userInfo.affiliatedClassCode,
         ...this.pageInfo
@@ -131,6 +151,11 @@ export default {
           let endTime = new Date(that.tableData[i].endTime);
           that.tableData[i].endTime = that.timeReversal(endTime);
           that.tableData[i].status = endTime.getTime() > nowTime.getTime() ? '进行中' : '已结束';
+          for (let j = 0; j < that.taskClass.length; j++){
+            if (that.taskClass[j].belongTaskId === that.tableData[i].id){
+              that.tableData[i].uploadStatus = that.taskClass[j].status;
+            }
+          }
         }
       });
     },
@@ -144,7 +169,18 @@ export default {
     },
     tableCellStyle({row, column, rowIndex, columnIndex}){
       if (column.label === '状态'){
-        if (row['status'] === '进行中' || row['status'] === '完成'){
+        if (row['status'] === '进行中'){
+          return {
+            color: 'green'
+          };
+        } else {
+          return {
+            color: 'red'
+          };
+        }
+      }
+      if (column.label === '任务进度'){
+        if (row['uploadStatus'] === '完成'){
           return {
             color: 'green'
           };
@@ -184,33 +220,33 @@ export default {
         a.click();
       });
     },
-    beforeUploadForm (file) {
-      // 验证文件类型
-      let testmsg = file.name.substring(file.name.lastIndexOf('.') + 1);
-      const extension = testmsg === 'doc' || testmsg === 'docx';
-      if (!extension) {
-        this.$message({
-          message: '上传文件只能是doc/docx格式!',
-          duration: 1000,
-          showClose: true,
-          type: 'warning'
-        });
-      }
-      return extension;
+    uploadFile(row){
+      this.fileData = row;
+      this.dialogVisible = true;
     },
-    fileChange(param, type){
-      let date = new Date();
+    handleClose(){
+      this.dialogVisible = false;
+    },
+    submit(){
       let formData = new FormData();
-      formData.append('file', param.file);
-      formData.append('stuNumber', this.fileData.stuNumber);
+      let date = new Date();
+      formData.append('file', this.file.raw);
+      formData.append('stuNumber', this.userInfo.stuNumber);
       formData.append('taskId', this.fileData.id);
       formData.append('uploadTime', date.toString());
       api.uploadFile(formData).then(res => {
-        console.log(res);
+        this.$message.success(res.message);
       });
+      this.dialogVisible = false;
     },
-    uploadFile(row){
-      this.fileData = row;
+    fileChange(file, fileList) {
+      this.file = fileList[0];
+    },
+    getStudentTaskClass(){
+      let that = this;
+      api.getStudentTaskClass({stuNumber: this.userInfo.stuNumber}).then(res => {
+        that.taskClass = res.result;
+      });
     }
   },
   created () {
