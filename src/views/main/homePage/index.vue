@@ -22,7 +22,7 @@
             </el-col>
             <el-col :span="8">
               <div class="video-play">
-                <video-player :videoUrl="extensionList[0].videoUrl" :imageUrl="extensionList[0].imageUrl"></video-player>
+                <video-player :videoUrl="extensionList ? extensionList[0].videoUrl : null" :imageUrl="extensionList ? extensionList[0].imageUrl : null"></video-player>
               </div>
             </el-col>
           </el-row>
@@ -87,7 +87,7 @@ export default {
       username: '',
       information: {},
       hotList: [],
-      recommendList: []
+      recommendList: [],
     };
   },
   methods: {
@@ -135,10 +135,10 @@ export default {
   },
   created () {
     this.identify = localStorage.getItem('userIdentify');
-    this.getExtension();
     this.getHotList();
     this.getRecommendTeacher();
-  }
+    this.getExtension();
+  },
 };
 </script>
 

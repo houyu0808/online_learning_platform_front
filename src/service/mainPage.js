@@ -38,5 +38,8 @@ api.getTeacher = (params) => {
 api.getTodayRecommend = () => {
   return axios.get("common/gettodayrecommend");
 };
+api.searchVideo = (params) => {
+  return axios.get("common/searchvideo", params);
+};
 
 export default api;

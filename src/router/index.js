@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import {validateToken} from '../service/login';
 
 Vue.use(Router);
 const router = new Router({
@@ -45,6 +46,12 @@ const router = new Router({
           path: '/learning-platform/task-center',
           name: '任务中心',
           component: () => import('../views/main/taskCenter/index'),
+          meta: {requireAuth: true}
+        },
+        {
+          path: '/learning-platform/search-video',
+          name: '视频搜索',
+          component: () => import('../views/main/searchPage/index'),
           meta: {requireAuth: true}
         }
       ]
@@ -173,10 +180,18 @@ const router = new Router({
 
 router.beforeEach(function(to, from, next) {
   document.documentElement.scrollTop = 0;
-  if (!localStorage.getItem("token")) {
+  if (!localStorage.getItem("token") || localStorage.getItem("username") === '超级管理员') {
     if (to.path !== '/' && to.meta.requireAuth) {
+      this.$message.warning('登录信息失效');
       return next('/');
     }
+  } else {
+    validateToken(localStorage.getItem("token")).then((res) => {
+      if (res.status !== 200) {
+        this.$message.warning(res.message);
+        return next("/home");
+      }
+    });
   }
   next();
 });

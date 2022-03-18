@@ -1,0 +1,87 @@
+.main-box{
+  width: 100%;
+  height: 100%;
+  background: #F4F5F7;
+  .container{
+    width: 1100px;
+    height: 100%;
+    margin: 0 auto;
+    .main-body{
+      padding-top: 20px;
+      min-width: 1100px;
+      .extension{
+        display: flex;
+        /*实现垂直居中*/
+        align-items: center;
+        width: 100%;
+        margin-top: 1rem;
+        .extension-logo{
+          height: 3rem;
+        }
+      }
+      /deep/ .el-card{
+        width: 192px;
+        height: 160px;
+        margin-top: 1rem;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+      }
+      .image-card{
+        width: 192px;
+        height: 108px;
+      }
+      .title-author{
+        .title{
+          display: inline-block;
+          margin-left: 2px;
+        }
+        .author{
+          display: inline-block;
+          margin-left: 2px;
+          font-size: 0.7rem;
+          color: gray;
+        }
+      }
+    }
+    .page-footer{
+      text-align: center;
+
+      /deep/ .el-pager li{
+        background: none !important;
+      }
+      /deep/ .btn-next,/deep/ .btn-prev{
+        background: none !important;
+      }
+    }
+
+  }
+}
+/deep/ .el-tabs{
+  background: none;
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/deep/ .el-tabs__header{
+  border: none;
+  margin-top: 20px;
+  margin-left: 15px;
+}
+/deep/ .el-tabs__item{
+  margin-right: 10px;
+  border-radius: 8px;
+  border: none;
+  height: 32px;
+  padding: 0 15px;
+  line-height: 32px;
+  color: var(--brand_blue);
+
+}
+/deep/.el-tabs--border-card>.el-tabs__header .el-tabs__item.is-active {
+  color: #409EFF;
+  background: #DFF6FD;
+  border-right-color: transparent;
+  border-left-color: transparent;
+}
+

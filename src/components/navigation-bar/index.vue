@@ -16,6 +16,11 @@
       <el-menu-item index="/learning-platform/task-center" v-if="identify === '教师'">任务中心</el-menu-item>
       <el-menu-item index="4" disabled>论坛中心</el-menu-item>
       <el-menu-item index="5" disabled>自测评估</el-menu-item>
+      <div style="margin-top: 15px;" class="search-input">
+        <el-input placeholder="搜索视频" v-model="searchInfo" class="input-with-select" @keydown.enter.native="searchVideo">
+          <el-button slot="append" icon="el-icon-search" @click="searchVideo()" ></el-button>
+        </el-input>
+      </div>
       <el-popover
         placement="top-start"
         :title="welcome + username"
@@ -56,7 +61,8 @@ export default {
       mainLogo: mainLogo,
       welcome: "",
       username: "",
-      identify: ""
+      identify: "",
+      searchInfo: ""
     };
   },
   methods: {
@@ -86,6 +92,16 @@ export default {
     },
     hideHover() {
       document.getElementById('exit-image').src = exitImage;
+    },
+    searchVideo(){
+      if (this.searchInfo !== ''){
+        this.$router.push({
+          path: '/learning-platform/search-video',
+          query: {searchInfo: this.searchInfo}
+        });
+      } else {
+        this.$message.warning('请输入搜索内容！');
+      }
     }
   },
   created() {

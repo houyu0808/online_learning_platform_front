@@ -256,8 +256,7 @@ import {
   searchTeacher,
   stuRegister,
   teachRegister,
-  userLogin,
-  validateToken
+  userLogin
 } from "../../service/login";
 import url from "../../utils/url";
 
@@ -468,18 +467,6 @@ export default {
               this.$message.warning(res.message);
             }
           });
-        }
-      });
-    }
-  },
-  beforeCreate() {
-    // 判断用户登陆状态
-    if (localStorage.getItem("token") !== null && localStorage.getItem("username") !== '超级管理员') {
-      validateToken(localStorage.getItem("token")).then((res) => {
-        if (res.status === 500) {
-          this.$message.warning(res.message);
-        } else {
-          this.$router.replace("/home");
         }
       });
     }
