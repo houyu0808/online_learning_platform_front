@@ -23,22 +23,25 @@
       </div>
       <el-popover
         placement="top-start"
-        :title="welcome + username"
+        :title="welcome + userInfo.username"
         width="200"
         trigger="hover"
       >
-      <div class="head-hover" style="text-align: center; margin: 0">
-        <div class="exit-icon" @click="exit" @mouseover="showHover" @mouseout="hideHover">
-          <img :src="exitImage" class="exit-image" id="exit-image" alt="退出" title="退出登录">
+        <div class="head-hover" style="text-align: center; margin: 0">
+          <div class="function-list">
+            <div class="fun-item">个人中心</div>
+          </div>
+          <div class="exit-icon" @click="exit" @mouseover="showHover" @mouseout="hideHover">
+            <img :src="exitImage" class="exit-image" id="exit-image" alt="退出" title="退出登录">
+          </div>
         </div>
-      </div>
-      <div
-        type="primary"
-        class="head-image"
-        slot="reference"
-      >
-        <img class="image" :src="headImage" alt="头像" />
-      </div>
+        <div
+          type="primary"
+          class="head-image"
+          slot="reference"
+        >
+          <img class="image" :src="userInfo.headImgUrl ? userInfo.headImgUrl : headImage" alt="头像" />
+        </div>
       </el-popover>
     </el-menu>
   </div>
@@ -60,8 +63,8 @@ export default {
       exitHoverImage: exitHoverImage,
       mainLogo: mainLogo,
       welcome: "",
-      username: "",
       identify: "",
+      userInfo: "",
       searchInfo: ""
     };
   },
@@ -70,9 +73,9 @@ export default {
       console.log(key, keyPath);
     },
     exit() {
-      this.$router.replace("/");
       localStorage.removeItem("token");
-      localStorage.removeItem("username");
+      localStorage.removeItem('information');
+      this.$router.replace("/");
     },
     setWelcomeWorld() {
       const nowTime = new Date();
@@ -106,7 +109,7 @@ export default {
   },
   created() {
     this.setWelcomeWorld();
-    this.username = localStorage.getItem('username');
+    this.userInfo = JSON.parse(localStorage.getItem('information'));
     this.identify = localStorage.getItem('userIdentify');
   },
 };

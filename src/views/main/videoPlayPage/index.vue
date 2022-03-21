@@ -26,7 +26,7 @@
           <div class="line"></div>
           <div class="comment-box">
             <div class="comment">
-              <div class="user-image"><img src="../../../assets/images/默认头像.jpeg" alt=""></div>
+              <div class="user-image"><img :src="userInfo.headImgUrl" alt=""></div>
               <div class="comment-input-area"><textarea maxlength="100" placeholder="发表一下你对本视频的看法吧!" v-model="commentInfo.commentText"></textarea></div>
               <div class="submit-comment"><button @click="addComments()">发表评论</button></div>
             </div>
@@ -36,7 +36,7 @@
             <div class="show-comments" v-else>
               <div class="comments-item" v-for="(item,index) in commentList" :key="index">
                 <div class="user-comments">
-                  <img src="../../../assets/images/默认头像.jpeg" alt="">
+                  <img :src="item.commentHeadImg ? item.commentHeadImg : headImg" alt="">
                   <div class="user-right">
                     <div class="comment-username">
                       {{ item.commentUsername }}
@@ -64,7 +64,7 @@
                   </div>
                 </div>
                 <div class="user-comments-reply" v-for="(data,i) in item.childCommentList" :key="i">
-                  <img src="../../../assets/images/默认头像.jpeg" alt="">
+                  <img :src="data.commentHeadImg ? data.commentHeadImg : headImg" alt="">
                   <div class="reply-right">
                     <div class="reply-right-top">
                       <div class="reply-name">{{ data.commentUsername }}</div>
@@ -82,7 +82,7 @@
         </div>
         <div class="right-box">
           <div class="author-info">
-            <img src="../../../assets/images/teacherImg.png" :alt="video.belongTeacherName">
+            <img :src="teacher.headImgUrl ? teacher.headImgUrl : headImg" :alt="video.belongTeacherName">
             <div class="t-info">
               <div class="name">{{ video.belongTeacherName }}</div>
               <div class="autograph">{{ teacher.autograph }}</div>
@@ -126,6 +126,7 @@
 import api from '../../../service/mainPage';
 import commentApi from '../../../service/comment';
 import videoPlayer from '../../../components/video-player';
+import headImg from '../../../assets/images/默认头像.jpeg';
 
 export default {
   name: "index",
@@ -133,6 +134,7 @@ export default {
     return {
       id: '',
       video: {},
+      headImg: headImg,
       otherVideo: [],
       teacher: {},
       commentList: [],

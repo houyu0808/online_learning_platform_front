@@ -3,7 +3,7 @@
     <div class="contain-box">
       <div class="student-info-box">
         <div class="user-info" :style="{backgroundImage: 'url(' + hengFu +')'}">
-          <img :src="headImg" alt="">
+          <img :src="userInfo.headImgUrl? userInfo.headImgUrl : headImg" alt="">
           <div class="user-item">
             <div>
               <div class="username">{{ userInfo.username }}</div>

@@ -1,8 +1,8 @@
 <template>
   <div class="main-box">
     <div class="container">
-      <el-tabs type="border-card">
-        <el-tab-pane label="用户管理">
+      <el-tabs type="border-card" @tab-click="tabClick" value="name">
+        <el-tab-pane v-for="(item,index) in tabList" :key="index" :label="item.label" :name="item.name">
           <el-row type="flex" class="main-body" justify="center">
             <el-col :span="24">
               <el-row class="left-box">
@@ -19,9 +19,6 @@
             </el-col>
           </el-row>
         </el-tab-pane>
-        <el-tab-pane label="配置管理"></el-tab-pane>
-        <el-tab-pane label="角色管理"></el-tab-pane>
-        <el-tab-pane label="定时任务补偿"></el-tab-pane>
       </el-tabs>
       <el-footer class="page-footer">
         <div class="block">
@@ -58,6 +55,20 @@ export default {
         totalElements: 0,
         totalPages: 0
       },
+      tabList: [
+        {
+          label: '综合排序',
+          name: 'name'
+        },
+        {
+          label: '时间排序',
+          name: 'created_time'
+        },
+        {
+          label: '热度排序',
+          name: 'click_times'
+        }
+      ]
     };
   },
   watch: {
@@ -79,7 +90,6 @@ export default {
       let that = this;
       api.searchVideo(params).then(res => {
         that.videoList = res.result.content;
-        that.takeColor();
       });
     },
     toVideoPage(id){
@@ -98,9 +108,21 @@ export default {
       this.pageInfo.size = e;
       this.getTaskList();
     },
-    takeColor(){
-      let titles = document.getElementsByClassName('title');
-      console.log(titles);
+    tabClick(e){
+      let params = {
+        searchInfo: this.searchInfo,
+        ...this.pageInfo,
+        sort: e.name === 'click_times' ? e.name + ',desc' : e.name
+      };
+      params.page = params.page - 1;
+      delete params.totalElements;
+      delete params.pageSizes;
+      delete params.totalPages;
+      delete params.layout;
+      let that = this;
+      api.searchVideo(params).then(res => {
+        that.videoList = res.result.content;
+      });
     }
   },
   created () {

@@ -35,6 +35,16 @@
 }
 
 .head-hover {
+  .function-list{
+    width: calc(100% - 20px);
+    padding: 10px;
+    .fun-item{
+      cursor: pointer;
+      &:hover{
+        background: #DCDFE6;
+      }
+    }
+  }
     .exit-icon {
         cursor: pointer;
         margin: 0 auto;
