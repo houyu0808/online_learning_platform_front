@@ -65,18 +65,19 @@ export default {
   methods: {
     onSubmit() {
       this.loadStatus = true;
+      let that = this;
       adminLogin(this.form).then((res) => {
         if (res.status === 200) {
-          this.$message.success(res.message);
+          that.$message.success(res.message);
           localStorage.setItem('username', res.result);
-          this.$router.replace({
+          that.$router.replace({
             path: "/college-manage",
             params: { username: this.form.username },
           });
         } else {
-          this.$message.warning(res.message);
+          that.$message.warning(res.message);
         }
-        this.loadStatus = false;
+        that.loadStatus = false;
       });
     },
     backHomepage() {

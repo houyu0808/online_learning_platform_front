@@ -29,10 +29,8 @@
       >
         <div class="head-hover" style="text-align: center; margin: 0">
           <div class="function-list">
-            <div class="fun-item">个人中心</div>
-          </div>
-          <div class="exit-icon" @click="exit" @mouseover="showHover" @mouseout="hideHover">
-            <img :src="exitImage" class="exit-image" id="exit-image" alt="退出" title="退出登录">
+            <div class="fun-item" @click="enterPersonalCenter"><i class="el-icon-user"></i><div class="fun-name">个人中心</div><i class="el-icon-arrow-right"></i></div>
+            <div class="fun-item" @click="exit"><i class="el-icon-switch-button"></i><div class="fun-name">退出系统</div><i class="el-icon-arrow-right"></i></div>
           </div>
         </div>
         <div
@@ -74,7 +72,7 @@ export default {
     },
     exit() {
       localStorage.removeItem("token");
-      localStorage.removeItem('information');
+      // localStorage.removeItem('information');
       this.$router.replace("/");
     },
     setWelcomeWorld() {
@@ -105,6 +103,9 @@ export default {
       } else {
         this.$message.warning('请输入搜索内容！');
       }
+    },
+    enterPersonalCenter(){
+      this.$router.push('/learning-platform/personal-center');
     }
   },
   created() {

@@ -41,5 +41,8 @@ api.getTodayRecommend = () => {
 api.searchVideo = (params) => {
   return axios.get("common/searchvideo", params);
 };
+api.uploadHeadImg = (params) => {
+  return axios.post("common/uploadheadimg", params);
+};
 
 export default api;

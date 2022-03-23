@@ -101,20 +101,12 @@ export default {
       this.username = localStorage.getItem('username');
       let that = this;
       if (this.identify === '学生'){
-        api.getStudentInfo({username: this.username}).then(res => {
-          that.information = res.result;
-          localStorage.setItem('information', JSON.stringify(res.result));
-          api.getStudentHotList({majorCode: that.information.affiliatedMajorCode}).then(res => {
-            that.hotList = res.result;
-          });
+        api.getStudentHotList({majorCode: that.information.affiliatedMajorCode}).then(res => {
+          that.hotList = res.result;
         });
       } else {
-        api.getTeacherInfo({username: this.username}).then(res => {
-          that.information = res.result;
-          localStorage.setItem('information', JSON.stringify(res.result));
-          api.getTeacherHotList({collegeCode: that.information.affiliatedCollegeCode}).then(res => {
-            that.hotList = res.result;
-          });
+        api.getTeacherHotList({collegeCode: that.information.affiliatedCollegeCode}).then(res => {
+          that.hotList = res.result;
         });
       }
     },
@@ -135,6 +127,7 @@ export default {
   },
   created () {
     this.identify = localStorage.getItem('userIdentify');
+    this.information = JSON.parse(localStorage.getItem('information'));
     this.getHotList();
     this.getRecommendTeacher();
     this.getExtension();

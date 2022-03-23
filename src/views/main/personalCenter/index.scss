@@ -1,0 +1,81 @@
+.container{
+  width: 1100px;
+  margin: 0 auto;
+  .student-info{
+    width: 540px;
+    margin: 40px auto;
+    background: white;
+    border: 1px solid #e1e2e5;
+    padding: 20px;
+    box-shadow: 0 2px 4px #999999;
+    border-radius: 4px;
+    .title{
+      height: 15px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      .logo{
+        width: 4px;
+        height: 15px;
+        background: #1890ff;
+        border-radius: 2px;
+      }
+      .title-info{
+        font-size: 15px;
+        margin-left: 10px;
+        color: #1890ff;
+      }
+    }
+    /deep/ .el-upload {
+      border: 1px dashed #d9d9d9;
+      border-radius: 6px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .avatar-uploader .el-upload:hover {
+      border-color: #409EFF;
+    }
+    .avatar-uploader-icon {
+      font-size: 28px;
+      color: #8c939d;
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      display: block;
+    }
+    .head-img-item{
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      outline: solid 2px black;
+    }
+    .btn-box{
+      text-align: center;
+    }
+    /deep/ .el-form-item__content{
+      width: 400px;
+    }
+  }
+}
+/deep/ .el-dialog{
+  border-radius: 5px;
+}
+/deep/ .el-dialog__header{
+  padding: 10px;
+  height: 35px;
+}
+/deep/ .el-dialog__title{
+  font-size: 16px;
+  font-weight: bold;
+  color: #FB7299;
+}
+/deep/ .el-dialog__body{
+  padding: 10px;
+  height: 100px;
+}

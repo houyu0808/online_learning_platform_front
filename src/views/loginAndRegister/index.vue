@@ -378,7 +378,8 @@ export default {
         this.loadStatus = false;
         if (res.status === 200) {
           this.$message.success('登陆成功');
-          localStorage.setItem('username', res.result);
+          localStorage.setItem('username', res.result.username);
+          localStorage.setItem('information', JSON.stringify(res.result));
           localStorage.setItem('userIdentify', this.identify);
           this.$router.push("/home");
         } else {

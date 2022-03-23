@@ -33,28 +33,24 @@
       }
     }
 }
-
 .head-hover {
   .function-list{
     width: calc(100% - 20px);
     padding: 10px;
     .fun-item{
+      display: flex;
       cursor: pointer;
+      border-radius: 5px;
+      padding: 5px;
+      font-size: 15px;
+      align-items: center;
       &:hover{
         background: #DCDFE6;
       }
+      .fun-name{
+        margin-left: 25px;
+        margin-right: 40px;
+      }
     }
   }
-    .exit-icon {
-        cursor: pointer;
-        margin: 0 auto;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 2rem;
-        .exit-image {
-            width: 70%;
-            margin-top: 15%;
-            margin-left: 15%;
-        }
-    }
 }

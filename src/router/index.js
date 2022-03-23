@@ -53,6 +53,12 @@ const router = new Router({
           name: '视频搜索',
           component: () => import('../views/main/searchPage/index'),
           meta: {requireAuth: true}
+        },
+        {
+          path: '/learning-platform/personal-center',
+          name: '个人中心',
+          component: () => import('../views/main/personalCenter/index'),
+          meta: {requireAuth: true}
         }
       ]
     },
@@ -180,7 +186,7 @@ const router = new Router({
 
 router.beforeEach(function(to, from, next) {
   document.documentElement.scrollTop = 0;
-  if (!localStorage.getItem("token") || localStorage.getItem("username") === '超级管理员') {
+  if (!localStorage.getItem("token")) {
     if (to.path !== '/' && to.meta.requireAuth) {
       this.$message.warning('登录信息失效');
       return next('/');
