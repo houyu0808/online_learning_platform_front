@@ -59,6 +59,12 @@ const router = new Router({
           name: '个人中心',
           component: () => import('../views/main/personalCenter/index'),
           meta: {requireAuth: true}
+        },
+        {
+          path: '/learning-platform/forum',
+          name: '论坛',
+          component: () => import('../views/main/forum/index'),
+          meta: {requireAuth: true}
         }
       ]
     },

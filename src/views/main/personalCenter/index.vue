@@ -147,13 +147,13 @@ export default {
       api.uploadHeadImg(formData).then(res => {
         if (that.userInfo.identify === "学生"){
           localStorage.setItem('information', JSON.stringify(res.result.student));
-          this.$message.success('更换成功!');
         } else {
           localStorage.setItem('information', JSON.stringify(res.result.teacher));
-          this.$message.success('更换成功!');
         }
       });
       this.handleClose();
+      location.reload();
+      this.$message.success('更换成功!');
     }
   },
   created () {

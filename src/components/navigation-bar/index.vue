@@ -14,7 +14,7 @@
       <el-menu-item index="/learning-platform/broadcast-center">直播中心</el-menu-item>
       <el-menu-item index="/learning-platform/task-list" v-if="identify === '学生'">任务列表</el-menu-item>
       <el-menu-item index="/learning-platform/task-center" v-if="identify === '教师'">任务中心</el-menu-item>
-      <el-menu-item index="4" disabled>论坛中心</el-menu-item>
+      <el-menu-item index="/learning-platform/forum">论坛中心</el-menu-item>
       <el-menu-item index="5" disabled>自测评估</el-menu-item>
       <div style="margin-top: 15px;" class="search-input">
         <el-input placeholder="搜索视频" v-model="searchInfo" class="input-with-select" @keydown.enter.native="searchVideo">
