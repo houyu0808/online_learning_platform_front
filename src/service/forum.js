@@ -8,4 +8,13 @@ api.publishForum = (params) => {
 api.getForumList = (params) => {
   return axios.get('forum/getforumlist', params);
 };
+api.addLike = (params) => {
+  return axios.get('forum/addlike', params);
+};
+api.cancelLike = (params) => {
+  return axios.get('forum/cancellike', params);
+};
+api.addComment = (params) => {
+  return axios.post('forum/addcomment', params);
+};
 export default api;
