@@ -43,7 +43,7 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="学院代码：" prop="classCode">
+        <el-form-item label="班级代码：" prop="classCode">
           <el-input
             v-model="tableForm.classCode"
             placeholder="请先选择所属专业"

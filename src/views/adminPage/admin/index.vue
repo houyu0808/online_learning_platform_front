@@ -16,7 +16,7 @@
             <el-form-item label="账号:">
               <el-input
                 v-model="form.username"
-                placeholder="请输入学号"
+                placeholder="请输入账号"
               ></el-input>
             </el-form-item>
             <el-form-item label="密码:">
@@ -56,8 +56,8 @@ export default {
       logoImg2: require("../../../assets/images/logo2.png"),
       backImg: require("../../../assets/images/backImg.png"),
       form: {
-        username: "houyu",
-        password: "houyu07181",
+        username: "",
+        password: "",
       },
       loadStatus: false,
     };

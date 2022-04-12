@@ -292,8 +292,8 @@ export default {
     };
     return {
       form: {
-        username: "092718107",
-        password: "houyu07181",
+        username: "",
+        password: "",
         identify: "学生"
       },
       identify: "学生",

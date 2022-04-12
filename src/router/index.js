@@ -191,17 +191,16 @@ const router = new Router({
 });
 
 router.beforeEach(function(to, from, next) {
-  document.documentElement.scrollTop = 0;
-  if (!localStorage.getItem("token")) {
-    if (to.path !== '/' && to.meta.requireAuth) {
+  if (!localStorage.getItem("token")) { // 判断本地存储中是否存在token字段
+    if (to.path !== '/' && to.meta.requireAuth) { // 判断当前是否在登录页并且是否需要执行路由守卫
       this.$message.warning('登录信息失效');
-      return next('/');
+      return next('/'); // 失效返回登录页
     }
   } else {
-    validateToken(localStorage.getItem("token")).then((res) => {
+    validateToken(localStorage.getItem("token")).then((res) => { // 发送token验证请求
       if (res.status !== 200) {
         this.$message.warning(res.message);
-        return next("/home");
+        return next("/"); // token验证不通过返回首页
       }
     });
   }

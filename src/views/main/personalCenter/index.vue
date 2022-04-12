@@ -141,19 +141,22 @@ export default {
     uploadImage(){
       let formData = new FormData();
       formData.append('file', this.file);
-      formData.append('userNumber', this.userInfo.stuNumber);
+      formData.append('userNumber', this.userInfo.stuNumber ? this.userInfo.stuNumber : this.userInfo.employeeNumber);
       formData.append('identify', this.userInfo.identify);
       let that = this;
       api.uploadHeadImg(formData).then(res => {
         if (that.userInfo.identify === "学生"){
           localStorage.setItem('information', JSON.stringify(res.result.student));
+          this.handleClose();
+          this.$message.success('更换成功!');
+          location.reload();
         } else {
           localStorage.setItem('information', JSON.stringify(res.result.teacher));
+          this.handleClose();
+          this.$message.success('更换成功!');
+          location.reload();
         }
       });
-      this.handleClose();
-      location.reload();
-      this.$message.success('更换成功!');
     }
   },
   created () {
