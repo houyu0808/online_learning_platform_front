@@ -192,7 +192,11 @@ export default {
     },
     getForumsList(){
       let that = this;
-      api.getForumList(this.pageInfo).then(res => {
+      let param = {
+        userNumber: this.userInfo.stuNumber ? this.userInfo.stuNumber : this.userInfo.employeeNumber,
+        ...this.pageInfo
+      };
+      api.getForumList(param).then(res => {
         that.forumList = res.result;
         for (let i = 0; i < that.forumList.length; i++){
           that.showCommentList[i] = false;
@@ -300,7 +304,8 @@ export default {
       } else {
         api.addLike({
           forumId: item.forumVO.id,
-          userNumber: (this.userInfo.stuNumber ? this.userInfo.stuNumber : this.userInfo.employeeNumber)
+          userNumber: (this.userInfo.stuNumber ? this.userInfo.stuNumber : this.userInfo.employeeNumber),
+          identify: this.userInfo.identify
         }).then(res => {
           this.$message.success(res.message);
           this.getForumsList();

@@ -394,12 +394,29 @@ export default {
     // 返回
     back() {
       this.showBox = "register";
-      this.studentForm = {};
-      this.teacherForm = {};
+      this.studentForm = {
+        stuNumber: "",
+        username: "",
+        password: "",
+        phoneNumber: "",
+        surePassword1: ""
+      };
+      this.teacherForm = {
+        employeeNumber: "",
+        username: "",
+        password: "",
+        phoneNumber: ""
+      };
     },
     back2() {
       this.showBox = "login";
-      this.changeForm = {};
+      this.changeForm = {
+        username: "",
+        identify: "",
+        password: "",
+        newPassword: "",
+        surePassword3: ""
+      };
     },
     // 通过学号获取学生信息
     searchStudentByStuNumber(val) {
@@ -470,6 +487,11 @@ export default {
           });
         }
       });
+    }
+  },
+  created () {
+    if (localStorage.getItem('token')){
+      this.$router.push('/home');
     }
   }
 };

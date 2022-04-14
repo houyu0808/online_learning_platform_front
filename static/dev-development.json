@@ -1,6 +1,6 @@
 {
   "BASE_URL": "http://localhost:8090/",
-  "Url": "http://localhost:8080",
+  "Url": "http://localhost:8081",
   "MENU": [
     {
       "id": "college-manage",

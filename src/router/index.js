@@ -199,6 +199,7 @@ router.beforeEach(function(to, from, next) {
   } else {
     validateToken(localStorage.getItem("token")).then((res) => { // 发送token验证请求
       if (res.status !== 200) {
+        localStorage.removeItem('token');
         this.$message.warning(res.message);
         return next("/"); // token验证不通过返回首页
       }
