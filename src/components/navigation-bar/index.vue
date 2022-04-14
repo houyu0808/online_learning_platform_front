@@ -21,6 +21,9 @@
           <el-button slot="append" icon="el-icon-search" @click="searchVideo()" ></el-button>
         </el-input>
       </div>
+      <div class="broadcast-btn" v-if="userInfo.identify === '教师'">
+        <el-button type="primary" @click="uploadVideo">上传视频</el-button>
+      </div>
       <el-popover
         placement="top-start"
         :title="welcome + userInfo.username"
@@ -106,6 +109,9 @@ export default {
     },
     enterPersonalCenter(){
       this.$router.push('/learning-platform/personal-center');
+    },
+    uploadVideo(){
+      this.$router.push('/learning-platform/video-upload');
     }
   },
   created() {
