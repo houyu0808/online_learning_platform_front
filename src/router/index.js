@@ -37,6 +37,12 @@ const router = new Router({
           meta: {requireAuth: true}
         },
         {
+          path: '/learning-platform/broadcast-page',
+          name: '直播页面',
+          component: () => import('../views/main/broadcastPage/index'),
+          meta: {requireAuth: true}
+        },
+        {
           path: '/learning-platform/task-list',
           name: '任务中心',
           component: () => import('../views/main/taskList/index'),

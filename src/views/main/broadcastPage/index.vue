@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import api from '../../../service/broadcast';
 
 export default {
   name: 'index',
@@ -37,12 +38,23 @@ export default {
           remainingTimeDisplay: false,
           fullscreenToggle: true // 全屏按钮
         }
-      }
+      },
+      id: ''
     };
   },
   methods: {
+    getBroadInfo(){
+      api.getBroadcastById({id: this.id}).then(res => {
+        if (res.result.status === 0){
+          this.$router.push('/learning-platform/broadcast-center');
+          this.$message.warning('该老师还未开启直播(直播存在延时，请等待一会后刷新页面重试)');
+        }
+      });
+    }
   },
-  mounted () {
+  created () {
+    this.id = this.$route.query.id;
+    this.getBroadInfo();
   }
 };
 </script>
